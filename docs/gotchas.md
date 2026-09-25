@@ -12,3 +12,7 @@ it's the early warning. Keep servo speed moderate on Uno power.
 
 ## An unmounted servo jerks
 The body twists against the horn's motion. Tape or screw it down.
+
+## Serial Plotter and Serial Monitor share one port
+Only one can be open at a time. A blank plotter usually means the
+Monitor still has the port.

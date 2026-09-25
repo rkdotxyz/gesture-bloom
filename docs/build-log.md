@@ -47,3 +47,22 @@ breakout needed for now.
 **Fix:** tape or screw it down (phase 2).
 
 **Next:** Phase 2: trimmer controls the servo.
+
+
+## Phase 2: Trimmer drives the servo (v0.3) · 2026-09-25
+
+**Built:** trimmer on the Uno rail (cols 6–8), wiper to A0, and
+`firmware/pot_servo/pot_servo.ino`: reads A0 100×/s, smooths it
+(exponential moving average, SMOOTHING = 8), ignores changes under
+8 µs (deadband), moves at 900 µs/s, and prints raw/smooth/servo
+lines for the Serial Plotter. The servo is now held down.
+
+**Result:** the servo follows the trimmer across its range and is still
+when untouched. Smoothing ON feels clearly better; OFF feels jerky.
+Kept the defaults (SMOOTHING 8, DEADBAND_US 8, SPEED 900).
+
+**Learned:** a trimmer is a voltage divider; analogRead maps 0–5 V to
+0–1023; the reading is ratiometric, so Uno 5V sag cancels out;
+smoothing plus a deadband is what keeps a servo quiet on noisy input.
+
+**Next:** Phase 3: serial protocol firmware.
