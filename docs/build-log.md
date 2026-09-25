@@ -66,3 +66,23 @@ Kept the defaults (SMOOTHING 8, DEADBAND_US 8, SPEED 900).
 smoothing plus a deadband is what keeps a servo quiet on noisy input.
 
 **Next:** Phase 3: serial protocol firmware.
+
+
+## Phase 3: Teach the Uno to listen (v0.4) · 2026-09-25
+
+**Built:** `firmware/bloom/bloom.ino` + `config.h`, the real firmware.
+It parses `B:<0-100>` lines, rejects anything else with `ERR:`, maps bloom %
+onto CLOSED_US..OPEN_US (placeholders 1000/2000 µs = 45°/135°), moves at
+900 µs/s, reports `A:<deg>`, and has a 1.5 s watchdog that eases the flower
+closed. States: WAITING → FOLLOWING → CLOSING → WAITING.
+Added `docs/protocol.md`.
+
+**Result:** all Serial Monitor tests passed. B:100 → 45° to 135° in ~1.2 s;
+watchdog fired 1.52 s after the last message; eased back to 45° and WAITING.
+Bad input rejected with ERR. No unexpected resets.
+
+**Learned:** a protocol is a contract; validate everything that arrives;
+the device, not the sender, owns the physical limits; a watchdog makes
+"sender disappeared" safe by default.
+
+**Next:** Phase 4: browser slider over Web Serial.
