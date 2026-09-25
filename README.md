@@ -9,12 +9,12 @@ closed; unwinding lets them fall open.
 
 ## Status
 
-Phase 0: repo set up, board alive, serial echo working.
+Phase 1: servo runs from the Uno's 5V (tested unloaded, 0 resets).
 
 ## Roadmap
 
 - [x] Phase 0: set up and blink
-- [ ] Phase 1: power the servo safely
+- [x] Phase 1: power the servo safely
 - [ ] Phase 2: the potentiometer drives the servo
 - [ ] Phase 3: talk to the Uno (serial protocol)
 - [ ] Phase 4: a browser slider moves the servo
