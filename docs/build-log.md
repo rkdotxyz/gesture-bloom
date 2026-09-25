@@ -86,3 +86,25 @@ the device, not the sender, owns the physical limits; a watchdog makes
 "sender disappeared" safe by default.
 
 **Next:** Phase 4: browser slider over Web Serial.
+
+
+## Phase 4: Drive the flower from a web page (v0.5) · 2026-09-25
+
+**Built:** `web/` control page: index.html, style.css, serial.js
+(BloomSerial: Web Serial connection, line splitting, waits for READY,
+flags unexpected resets) and main.js (slider + presets, send loop at
+≤20/s, keep-alive every 500 ms, serial log). Served with
+`python3 -m http.server 8000`, opened in Chrome.
+
+**Result:** slider drives the servo end to end; keep-alive holds position;
+unticking keep-alive or closing the tab lets the watchdog close it.
+- Unexpected resets during the 30 s fast-drag test: __
+
+**Change:** config.h CLOSED_US/OPEN_US widened from 1000/2000 to
+500/2500 (full 0–180°) until the flower's real range is measured.
+
+**Learned:** Web Serial needs Chrome and localhost; only one program
+can hold a serial port; opening the port resets the Uno, so wait for
+READY; throttle UI events into a steady send loop.
+
+**Next:** Phase 5: build the flower, calibrate its range.

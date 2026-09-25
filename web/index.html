@@ -1,0 +1,60 @@
+<!doctype html>
+<!--
+  index.html  —  Gesture Bloom control page
+  Phase 4: connect to the Uno and drive the flower with a slider.
+  Serve this folder with:  python3 -m http.server 8000
+  then open http://localhost:8000 in Chrome.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gesture Bloom</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <h1>Gesture Bloom</h1>
+      <div class="connection">
+        <span id="status" class="pill" data-status="idle">Not connected</span>
+        <button id="connect" class="btn primary" type="button">Connect to Uno</button>
+      </div>
+    </header>
+    <p id="status-detail" class="detail"></p>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Bloom</h2>
+        <div class="readouts">
+          <div><span class="label">Sent</span><span id="bloom-value" class="big">0%</span></div>
+          <div><span class="label">Servo</span><span id="angle-value" class="big">–</span></div>
+        </div>
+      </div>
+      <!-- 0 = closed, 100 = fully open; the Uno maps this onto its own range -->
+      <input id="bloom" type="range" min="0" max="100" value="0" step="1" disabled aria-label="Bloom percent">
+      <div class="scale"><span>Closed</span><span>Open</span></div>
+      <div class="presets">
+        <button class="btn" type="button" data-preset="0" disabled>0%</button>
+        <button class="btn" type="button" data-preset="25" disabled>25%</button>
+        <button class="btn" type="button" data-preset="50" disabled>50%</button>
+        <button class="btn" type="button" data-preset="75" disabled>75%</button>
+        <button class="btn" type="button" data-preset="100" disabled>100%</button>
+      </div>
+      <div class="options">
+        <label><input id="keepalive" type="checkbox" checked> Send keep-alive every 500 ms</label>
+        <label><input id="show-sent" type="checkbox"> Log every message sent</label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Serial log</h2>
+      <div id="log" class="log" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- type="module" lets main.js import serial.js. Modules only load over
+       http(s), which is one reason the page must be served, not double-clicked. -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>

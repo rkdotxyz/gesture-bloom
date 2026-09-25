@@ -24,8 +24,8 @@ const int PULSE_MAX = 2500;
 // you'll find the real values with the browser slider and put them here.
 // CLOSED_US may be larger than OPEN_US if your mechanism winds the
 // other way; the maths handles either direction.
-const int CLOSED_US = 1000;
-const int OPEN_US = 2000;
+const int CLOSED_US = 500;
+const int OPEN_US = 2500;
 
 // ---------- Motion -------------------------------------------------
 // Maximum change in pulse width per second. 900 µs/s ≈ 81°/s.

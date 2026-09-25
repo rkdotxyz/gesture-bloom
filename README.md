@@ -9,7 +9,7 @@ closed; unwinding lets them fall open.
 
 ## Status
 
-Phase 1: servo runs from the Uno's 5V (tested unloaded, 0 resets).
+Phase 4: browser slider drives the servo over Web Serial.
 
 ## Roadmap
 
@@ -17,7 +17,7 @@ Phase 1: servo runs from the Uno's 5V (tested unloaded, 0 resets).
 - [x] Phase 1: power the servo safely
 - [x] Phase 2: the potentiometer drives the servo
 - [x] Phase 3: talk to the Uno (serial protocol)
-- [ ] Phase 4: a browser slider moves the servo
+- [x] Phase 4: a browser slider moves the servo
 - [ ] Phase 5: build the flower
 - [ ] Phase 6: track your hand
 - [ ] Phase 7: your hand blooms the flower (v1.0)
